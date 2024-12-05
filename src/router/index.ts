@@ -33,6 +33,33 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "system-user" */ '../views/system/user.vue'),
             },
             {
+                path: '/file-upload',
+                name: 'file-upload',
+                meta: {
+                    title: '文件上传',
+                    permiss: '11',
+                },
+                component: () => import(/* webpackChunkName: "file-upload" */ '../views/sourcedata/file-upload.vue'),
+            },
+            {
+                path: '/cti-process',
+                name: 'cti-process',
+                meta: {
+                    title: '网络威胁情报管理',
+                    permiss: '11',
+                },
+                component: () => import(/* webpackChunkName: "cti-process" */ '../views/sourcedata/cti-process.vue'),
+            },
+            {
+                path: '/rizhi-process',
+                name: 'rizhi-process',
+                meta: {
+                    title: '系统审计日志管理',
+                    permiss: '11',
+                },
+                component: () => import(/* webpackChunkName: "rizhi-process" */ '../views/sourcedata/rizhi-process.vue'),
+            },
+            {
                 path: '/system-role',
                 name: 'system-role',
                 meta: {

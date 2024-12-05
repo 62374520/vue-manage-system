@@ -2,24 +2,23 @@
     <div class="header">
         <!-- 折叠按钮 -->
         <div class="header-left">
-            <img class="logo" src="../assets/img/logo.svg" alt="" />
-            <div class="web-title">后台管理系统</div>
-            <div class="collapse-btn" @click="collapseChage">
+            <div class="web-title">基于网络威胁知识图谱的攻击检测系统</div>
+            <!-- <div class="collapse-btn" @click="collapseChage">
                 <el-icon v-if="sidebar.collapse">
                     <Expand />
                 </el-icon>
                 <el-icon v-else>
                     <Fold />
                 </el-icon>
-            </div>
+            </div> -->
         </div>
         <div class="header-right">
             <div class="header-user-con">
-                <div class="btn-icon" @click="router.push('/theme')">
+                <!-- <div class="btn-icon" @click="router.push('/theme')">
                     <el-tooltip effect="dark" content="设置主题" placement="bottom">
                         <i class="el-icon-lx-skin"></i>
                     </el-tooltip>
-                </div>
+                </div> -->
                 <div class="btn-icon" @click="router.push('/ucenter')">
                     <el-tooltip
                         effect="dark"
@@ -30,13 +29,15 @@
                     </el-tooltip>
                     <span class="btn-bell-badge" v-if="message"></span>
                 </div>
-                <div class="btn-icon" @click="setFullScreen">
+                <!-- <div class="btn-icon" @click="setFullScreen">
                     <el-tooltip effect="dark" content="全屏" placement="bottom">
                         <i class="el-icon-lx-full"></i>
                     </el-tooltip>
-                </div>
+                </div> -->
                 <!-- 用户头像 -->
-                <el-avatar class="user-avator" :size="30" :src="imgurl" />
+                <!-- <el-avatar class="user-avator" :size="30" :src="imgurl" /> -->
+                 <!-- <el-avatar class="user-avator" :size="30" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" /> -->
+                 <el-avatar class="user-avator" :size="30" :icon="UserFilled" />
                 <!-- 用户名下拉菜单 -->
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
@@ -65,6 +66,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useSidebarStore } from '../store/sidebar';
+import { UserFilled } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router';
 import imgurl from '../assets/img/img.jpg';
 

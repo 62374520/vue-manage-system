@@ -7,8 +7,8 @@
                         <User />
                     </el-icon>
                     <div class="card-content">
-                        <countup class="card-num color1" :end="6666" />
-                        <div>用户访问量</div>
+                        <countup class="card-num color1" :end="666776" />
+                        <div>用户访问量aaa</div>
                     </div>
                 </el-card>
             </el-col>
@@ -90,7 +90,7 @@
             <el-col :span="10">
                 <el-card shadow="hover" :body-style="{ height: '400px' }">
                     <div class="card-header">
-                        <p class="card-header-title">渠道统计</p>
+                        <p class="card-header-title">国内攻击分布</p>
                         <p class="card-header-desc">最近一个月的订单来源统计</p>
                     </div>
                     <v-chart class="map-chart" :option="mapOptions" />

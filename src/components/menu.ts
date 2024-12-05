@@ -9,8 +9,60 @@ export const menuData: Menus[] = [
     },
     {
         id: '1',
-        title: '系统管理',
+        title: '数据上传与处理',
         index: '1',
+        icon: 'HomeFilled',
+        children: [
+            {
+                id: '11',
+                pid: '1',
+                index: '/file-upload',
+                title: '文件上传',
+            },
+            {
+                id: '12',
+                pid: '1',
+                index: '/cti-process',
+                title: '网络威胁情报数据管理',
+            },
+            {
+                id: '13',
+                pid: '1',
+                index: '/rizhi-process',
+                title: '系统审计日志数据管理',
+            },
+        ],
+    },
+    {
+        id: '1',
+        title: '知识管理',
+        index: '2',
+        icon: 'HomeFilled',
+        children: [
+            {
+                id: '11',
+                pid: '1',
+                index: '/system-user',
+                title: '知识抽取',
+            },
+            {
+                id: '12',
+                pid: '1',
+                index: '/system-role',
+                title: '角色管理',
+            },
+            {
+                id: '13',
+                pid: '1',
+                index: '/system-menu',
+                title: '菜单管理',
+            },
+        ],
+    },
+    {
+        id: '1',
+        title: '系统管理',
+        index: '3',
         icon: 'HomeFilled',
         children: [
             {
