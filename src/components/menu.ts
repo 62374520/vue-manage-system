@@ -11,7 +11,7 @@ export const menuData: Menus[] = [
         id: '1',
         title: '数据上传与处理',
         index: '1',
-        icon: 'HomeFilled',
+        icon: 'List',
         children: [
             {
                 id: '11',
@@ -37,13 +37,33 @@ export const menuData: Menus[] = [
         id: '1',
         title: '知识管理',
         index: '2',
-        icon: 'HomeFilled',
+        icon: 'ElementPlus',
+        children: [
+            {
+                id: '11',
+                pid: '1',
+                index: '/knowledge-show',
+                title: '图谱展示',
+            },
+            {
+                id: '12',
+                pid: '1',
+                index: '/knowledge-manage',
+                title: '知识库管理',
+            },
+        ],
+    },
+    {
+        id: '1',
+        title: '攻击检测',
+        index: '3',
+        icon: 'Search',
         children: [
             {
                 id: '11',
                 pid: '1',
                 index: '/system-user',
-                title: '知识抽取',
+                title: '攻击检测',
             },
             {
                 id: '12',
@@ -62,7 +82,7 @@ export const menuData: Menus[] = [
     {
         id: '1',
         title: '系统管理',
-        index: '3',
+        index: '4',
         icon: 'HomeFilled',
         children: [
             {

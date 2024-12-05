@@ -35,8 +35,8 @@
                                 <el-form-item label="知识抽取状态：">
                                     <el-select v-model="formInline.region" placeholder="选择知识抽取状态" clearable
                                         style="width: 200px;">
-                                        <el-option label="网络威胁情报" value="shanghai" />
-                                        <el-option label="系统审计日志" value="beijing" />
+                                        <el-option label="网络威胁情报" value="网络威胁情报" />
+                                        <el-option label="系统审计日志" value="系统审计日志" />
                                     </el-select>
                                 </el-form-item>
                             </el-col>
@@ -61,54 +61,66 @@
                                 <el-form-item label="入库状态：">
                                     <el-select v-model="formInline.region" placeholder="选择入库状态" clearable
                                         style="width: 200px;">
-                                        <el-option label="网络威胁情报" value="shanghai" />
-                                        <el-option label="系统审计日志" value="beijing" />
+                                        <el-option label="网络威胁情报" value="网络威胁情报" />
+                                        <el-option label="系统审计日志" value="系统审计日志" />
                                     </el-select>
                                 </el-form-item>
                             </el-col>
                             <el-col :span="12" style="text-align: right;">
                                 <el-form-item>
-                                    <el-button type="primary" :icon="Search" @click="dialogFormVisible = true">查询</el-button>
+                                    <el-button type="primary" :icon="Search"
+                                        @click="dialogFormVisible = true">查询</el-button>
                                     <!-- <el-button type="primary" @click="onSubmit">查询</el-button> -->
                                 </el-form-item>
                             </el-col>
                         </el-row>
                     </el-form>
                     <!-- <el-button type="warning" :icon="CirclePlusFilled" @click="visible = true">新增</el-button> -->
-                    <el-dialog v-model="dialogFormVisible" title="上传文件" width="600">
+                    <el-dialog v-model="dialogFormVisible" title="知识抽取任务" width="600">
                         <el-form :model="form">
-
-                            <el-form-item label="选择文件类型" :label-width="formLabelWidth">
-                                <el-radio-group v-model="radio1" size="large"
-                                    style="width: 100%; display: flex; justify-content: center; gap: 20px;">
-                                    <el-radio-button label="网络威胁情报" value="网络威胁情报" />
-                                    <el-radio-button label="系统审计日志" value="系统审计日志" />
-                                </el-radio-group>
-                                <!-- <el-input v-model="form.name" autocomplete="off" /> -->
+                            <el-form-item label="网络威胁情报名称" :label-width="formLabelWidth">
+                                <el-col :span="24" style="text-align: center;">
+                                    <el-text class="mx-1">Volt Typhoon targets US critical infrastructure
+                                        with...</el-text>
+                                </el-col>
                             </el-form-item>
-                            <el-form-item label="选择文件" :label-width="formLabelWidth">
-                                <el-upload class="upload-demo" drag
-                                    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" multiple
-                                    style="width: 100%;">
-                                    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-                                    <div class="el-upload__text" style="line-height: 1.5; font-size: 14px;">
-                                        <el-text tag="b">点击此处或拖拽文件上传</el-text>
-                                        <br>
-                                        <el-text class="mx-1">支持单个或批量上传</el-text>
-
-                                    </div>
-                                </el-upload>
+                            <el-form-item label="当前状态" :label-width="formLabelWidth">
+                                <el-col :span="24" style="text-align: center;">
+                                    <el-text class="mx-1">知识抽取未完成</el-text>
+                                </el-col>
                             </el-form-item>
-                            <el-form-item label="文件描述" :label-width="formLabelWidth">
-                                <el-input v-model="textarea" style="width: 100%" :rows="2" type="textarea"
-                                    placeholder="" />
+                            <el-form-item label="选择抽取模式" :label-width="formLabelWidth">
+                                <el-col :span="24" style="text-align: center;">
+                                    <el-select v-model="formInline.date" placeholder="选择抽取模式" clearable
+                                        style="width: 350px;">
+                                        <el-option label="实体识别" value="实体识别" />
+                                        <el-option label="关系抽取" value="关系抽取" />
+                                        <el-option label="知识三元组抽取" value="知识三元组抽取" />
+                                    </el-select>
+                                </el-col>
+                            </el-form-item>
+                            <el-form-item label="选择实体识别模型" :label-width="formLabelWidth">
+                                <el-col :span="24" style="text-align: center;">
+                                    <el-select v-model="formInline.date1" placeholder="选择抽取模型" clearable
+                                        style="width: 350px;">
+                                        <el-option label="SecBABC" value="SecBABC" />
+                                    </el-select>
+                                </el-col>
+                            </el-form-item>
+                            <el-form-item label="模型参数" :label-width="formLabelWidth">
+                                <el-col :span="24" style="text-align: center;">
+                                    <el-select disabled  v-model="formInline.date2" placeholder="默认参数" clearable
+                                        style="width: 350px; " >
+                                        <el-option label="默认参数" value="默认参数" />
+                                    </el-select>
+                                </el-col>
                             </el-form-item>
                         </el-form>
                         <template #footer>
                             <div class="dialog-footer">
                                 <el-button @click="dialogFormVisible = false">取消</el-button>
                                 <el-button type="primary" @click="dialogFormVisible = false">
-                                    确认上传
+                                    开始抽取
                                 </el-button>
                             </div>
                         </template>
@@ -184,14 +196,14 @@ const dialogFormVisible = ref(false)
 const formLabelWidth = '140px'
 
 const form = reactive({
-	name: '',
-	region: '',
-	date1: '',
-	date2: '',
-	delivery: false,
-	type: [],
-	resource: '',
-	desc: '',
+    name: '',
+    region: '',
+    date1: '',
+    date2: '',
+    delivery: false,
+    type: [],
+    resource: '',
+    desc: '',
 })
 
 const tableData = ref<User[]>([]);

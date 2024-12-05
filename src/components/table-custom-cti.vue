@@ -19,7 +19,7 @@
                         <slot :name="item.prop" :rows="row" :index="$index">
                             <template v-if="item.prop == 'operator'">
                                 <el-link type="primary" style="margin-right: 30px;">下载威胁情报</el-link>
-                                <el-link type="primary" :disabled="row.knowledgestatus === '知识抽取完成'" style="margin-right: 30px;">知识抽取</el-link>
+                                <el-link type="primary" style="margin-right: 30px;">知识抽取</el-link>
                                 <el-link type="primary" :disabled="row.knowledgestatus === '知识抽取未完成'" style="margin-right: 30px;">下载知识抽取结果</el-link>
                                 <el-link type="primary" :disabled="row.sqlstatus === '已入库' || row.knowledgestatus === '知识抽取未完成'" style="margin-right: 20px;">入库</el-link>
                                 <!-- <el-text class="mx-1" type="primary" style="margin-right: 20px;">下载威胁情报</el-text>

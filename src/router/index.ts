@@ -60,6 +60,24 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "rizhi-process" */ '../views/sourcedata/rizhi-process.vue'),
             },
             {
+                path: '/knowledge-show',
+                name: 'knowledge-show',
+                meta: {
+                    title: '图谱展示',
+                    permiss: '11',
+                },
+                component: () => import(/* webpackChunkName: "knowledge-show" */ '../views/know/knowledge-show.vue'),
+            },
+            {
+                path: '/knowledge-manage',
+                name: 'knowledge-manage',
+                meta: {
+                    title: '知识库管理',
+                    permiss: '11',
+                },
+                component: () => import(/* webpackChunkName: "knowledge-manage" */ '../views/know/knowledge-manage.vue'),
+            },
+            {
                 path: '/system-role',
                 name: 'system-role',
                 meta: {
