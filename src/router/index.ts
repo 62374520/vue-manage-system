@@ -78,6 +78,15 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "knowledge-manage" */ '../views/know/knowledge-manage.vue'),
             },
             {
+                path: '/attack-detect',
+                name: 'attack-detect',
+                meta: {
+                    title: '攻击检测',
+                    permiss: '11',
+                },
+                component: () => import(/* webpackChunkName: "attack-detect" */ '../views/detect/attack-detect.vue'),
+            },
+            {
                 path: '/system-role',
                 name: 'system-role',
                 meta: {

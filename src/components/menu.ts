@@ -62,20 +62,8 @@ export const menuData: Menus[] = [
             {
                 id: '11',
                 pid: '1',
-                index: '/system-user',
+                index: '/attack-detect',
                 title: '攻击检测',
-            },
-            {
-                id: '12',
-                pid: '1',
-                index: '/system-role',
-                title: '角色管理',
-            },
-            {
-                id: '13',
-                pid: '1',
-                index: '/system-menu',
-                title: '菜单管理',
             },
         ],
     },
@@ -83,7 +71,7 @@ export const menuData: Menus[] = [
         id: '1',
         title: '系统管理',
         index: '4',
-        icon: 'HomeFilled',
+        icon: 'Setting',
         children: [
             {
                 id: '11',

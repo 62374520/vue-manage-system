@@ -7,7 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/table-custom copy.vue')['default']
+    copy: typeof import('./src/components/table-custom-entity copy.vue')['default']
     Countup: typeof import('./src/components/countup.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -36,6 +36,7 @@ declare module '@vue/runtime-core' {
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPagination: typeof import('element-plus/es')['ElPagination']
     ElProgress: typeof import('element-plus/es')['ElProgress']
+    ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
@@ -62,6 +63,8 @@ declare module '@vue/runtime-core' {
     TableCustom: typeof import('./src/components/table-custom.vue')['default']
     TableCustom2: typeof import('./src/components/table-custom2.vue')['default']
     TableCustomCti: typeof import('./src/components/table-custom-cti.vue')['default']
+    TableCustomDetect: typeof import('./src/components/table-custom-detect.vue')['default']
+    TableCustomEntity: typeof import('./src/components/table-custom-entity.vue')['default']
     TableDetail: typeof import('./src/components/table-detail.vue')['default']
     TableEdit: typeof import('./src/components/table-edit.vue')['default']
     TableSearch: typeof import('./src/components/table-search.vue')['default']

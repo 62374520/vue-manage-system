@@ -1,21 +1,73 @@
 <template>
     <div>
 
-        <TableSearch :query="query" :options="searchOpt" :search="handleSearch" />
+        <!-- <TableSearch :query="query" :options="searchOpt" :search="handleSearch" /> -->
 
         <div class="container">
-            <TableCustom :columns="columns" :tableData="fileData" :total="page.total" :viewFunc="handleView"
-                :delFunc="handleDelete" :page-change="changePage" :editFunc="handleEdit">
-                <template #toolbarBtn>
-                    实体类型，实体名称，搜索，图谱刷新，头结点、尾节点、关系，图谱总览
-                    <!-- <el-button type="warning" :icon="CirclePlusFilled" @click="visible = true">新增</el-button> -->
-                    <!-- <el-button type="primary" style="margin-right: 10px;"><el-icon class="el-icon--right"><UploadFilled /></el-icon>上传文件</el-button>   
-                    <el-button type="primary" style="margin-right: 10px;"><el-icon class="el-icon--right"><DeleteFilled /></el-icon>删除文件</el-button>   
-                    <el-button type="primary" style="margin-right: 10px;"><el-icon class="el-icon--right"><Refresh /></el-icon>刷新</el-button>    -->
+            <el-form :inline="true" :model="formInline" class="demo-form-inline" label-width="150px">
+                <el-row gutter={20} style="margin-left: 0px;">
+                    <el-col :span="8">
+                        <el-form-item label="头实体类型：">
+                            <el-select v-model="formInline.region" placeholder="选择头实体类型" clearable
+                                style="width: 200px;">
+                                <el-option label="网络威胁情报" value="网络威胁情报" />
+                                <el-option label="系统审计日志" value="系统审计日志" />
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="头实体信息：">
+                            <el-input v-model="formInline.user" placeholder="输入头实体信息" clearable />
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="关系类型：">
+                            <el-select v-model="formInline.region" placeholder="选择关系类型" clearable
+                                style="width: 200px;">
+                                <el-option label="网络威胁情报" value="网络威胁情报" />
+                                <el-option label="系统审计日志" value="系统审计日志" />
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="尾实体类型：">
+                            <el-select v-model="formInline.region" placeholder="选择尾实体类型" clearable
+                                style="width: 200px;">
+                                <el-option label="网络威胁情报" value="网络威胁情报" />
+                                <el-option label="系统审计日志" value="系统审计日志" />
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="尾实体信息：">
+                            <el-input v-model="formInline.user" placeholder="输入尾实体信息" clearable />
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" style="padding-left: 120px;">
+                        <el-form-item>
+                            <el-button type="primary" :icon="Search">查询</el-button>
+                            <el-button type="primary" :icon="Refresh" style="margin-left: 40px;">图谱还原</el-button>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+            </el-form>
+            <div class="image-container">
+                <div class="controls">
+                    <span>缩放比例：{{ Math.round(scale * 100) }}%</span>
+                    <el-slider v-model="scale" :min="0.1" :max="10" step="0.1" style="width: 300px; margin-left: 10px;"
+                        show-tooltip />
+                </div>
 
-
-                </template>
-            </TableCustom>
+                <!-- 矩形框 -->
+                <div class="image-box">
+                    <div class="image-wrapper" :style="{
+                        transform: `scale(${scale}) translate(${translateX}px, ${translateY}px)`,
+                        transformOrigin: 'top left'
+                    }" @mousedown="startDrag" @mousemove="onDrag" @mouseup="endDrag" @mouseleave="endDrag">
+                        <el-image :src="imageSrc" fit="contain" style="width: 100%; height: 100%;" />
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -33,7 +85,7 @@
     </div>
   </div> -->
 
-  <div class="svg-container">
+    <!-- <div class="svg-container">
     <div class="block">
       <el-image
         :src="imageSrc"
@@ -52,13 +104,14 @@
         show-tooltip
       />
     </div>
-  </div>
+  </div> -->
+
 </template>
 
 <script setup lang="ts" name="system-user">
 import { ref, reactive } from 'vue';
 import { ElMessage } from 'element-plus';
-import { CirclePlusFilled } from '@element-plus/icons-vue';
+import { CirclePlusFilled, Search, Refresh } from '@element-plus/icons-vue';
 import { User } from '@/types/user';
 import { fetchUserData } from '@/api';
 import TableCustom from '@/components/table-custom.vue';
@@ -67,7 +120,13 @@ import TableSearch from '@/components/table-search.vue';
 import { FormOption, FormOptionList } from '@/types/form-option';
 import imageSrc from '../../assets/img/know.svg';
 
+
 const scale = ref(1); // 初始缩放比例
+const translateX = ref(0); // X轴平移
+const translateY = ref(0); // Y轴平移
+const isDragging = ref(false); // 是否正在拖动
+let startX = 0;
+let startY = 0;
 
 const srcList = [
     'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
@@ -78,6 +137,28 @@ const srcList = [
     'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
     'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
 ]
+
+const startDrag = (event) => {
+    isDragging.value = true;
+    startX = event.clientX - translateX.value;
+    startY = event.clientY - translateY.value;
+    event.preventDefault(); // 防止页面滚动
+};
+
+// 拖动中
+const onDrag = (event) => {
+    if (isDragging.value) {
+        translateX.value = event.clientX - startX;
+        translateY.value = event.clientY - startY;
+    }
+};
+
+// 结束拖动
+const endDrag = () => {
+    isDragging.value = false;
+};
+
+
 // 查询相关
 const query = reactive({
     name: '',
@@ -104,6 +185,14 @@ const page = reactive({
     total: 0,
 })
 const tableData = ref<User[]>([]);
+
+const formInline = reactive({
+    user: '',
+    region: '',
+    date: '',
+    date1: '',
+    date2: '',
+})
 
 interface File {
     filename: string
@@ -232,7 +321,7 @@ const handleDelete = (row: User) => {
 </script>
 
 <style scoped>
-.svg-container {
+/* .svg-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -242,5 +331,40 @@ const handleDelete = (row: User) => {
   margin-top: 20px;
   display: flex;
   align-items: center;
+} */
+
+/* 容器设置 */
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 控制区样式 */
+.controls {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* 矩形框 */
+.image-box {
+    width: 100%;
+    /* 设置矩形框的宽度 */
+    height: 400px;
+    /* 设置矩形框的高度 */
+    border: 1px solid #ddd;
+    /* 边框样式 */
+    overflow: hidden;
+    /* 隐藏超出部分 */
+    position: relative;
+    /* 保证子元素相对定位 */
+}
+
+/* 图片容器 */
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
 }
 </style>
