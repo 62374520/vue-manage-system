@@ -169,7 +169,7 @@ let columns = ref([
     // { prop: 'datatype', label: '数据类型' },
     { prop: 'uploadtime', label: '上传时间', width: 200, align: 'center' },
     { prop: 'knowledgestatus', label: '知识抽取状态', width: 150, align: 'center' },
-    { prop: 'sqlstatus', label: '入库状态', width: 150, align: 'center' },
+    { prop: 'sqlstatus', label: '存储状态', width: 150, align: 'center' },
     { prop: 'operator', label: '操作' },
 ])
 const page = reactive({

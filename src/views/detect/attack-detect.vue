@@ -131,7 +131,7 @@
                                 <div class="card-content">
                                     <div><el-text class="mx-1" style="font-weight: bold;"
                                             size="large">攻击知识信息统计</el-text></div>
-                                    <countup class="card-num color3" :end="342" />
+                                    <countup class="card-num color3" :end="352" />
                                     <div><el-text class="mx-1">生成攻击知识的网络威胁情报数量</el-text></div>
                                 </div>
                             </el-card>

@@ -47,7 +47,7 @@
             </template>
         </el-table>
         <el-pagination v-if="hasPagination" :current-page="currentPage" :page-size="10" :background="true"
-            :layout="layout" :total="342" @current-change="handleCurrentChange" />
+            :layout="layout" :total="352" @current-change="handleCurrentChange" />
     </div>
 </template>
 
