@@ -21,11 +21,11 @@
                                 <el-button type="warning" size="small" :icon="View" @click="viewFunc(row)">
                                     查看
                                 </el-button>
-                                <el-button type="primary" size="small" :icon="Edit" @click="editFunc(row)">
-                                    编辑
+                                <el-button type="primary" size="small" :icon="Scissor" @click="editFunc(row)">
+                                    预处理
                                 </el-button>
-                                <el-button type="danger" size="small" :icon="Delete" @click="handleDelete(row)">
-                                    删除
+                                <el-button type="success"  size="small" :icon="FolderChecked" @click="handleDelete(row)">
+                                    入库
                                 </el-button>
                             </template>
                             <span v-else-if="item.formatter">
@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { toRefs, PropType, ref } from 'vue'
-import { Delete, Edit, View, Refresh } from '@element-plus/icons-vue';
+import { Delete, Edit, View, Refresh, Setting, Scissor, FolderChecked } from '@element-plus/icons-vue';
 import { ElMessageBox } from 'element-plus';
 
 const props = defineProps({

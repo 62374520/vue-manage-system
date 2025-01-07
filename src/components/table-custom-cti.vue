@@ -18,10 +18,11 @@
                     <template #default="{ row, column, $index }" v-if="!item.type">
                         <slot :name="item.prop" :rows="row" :index="$index">
                             <template v-if="item.prop == 'operator'">
-                                <el-link type="primary" style="margin-right: 30px;">下载威胁情报</el-link>
-                                <el-link type="primary" style="margin-right: 30px;">知识抽取</el-link>
-                                <el-link type="primary" :disabled="row.knowledgestatus === '知识抽取未完成'" style="margin-right: 30px;">下载知识抽取结果</el-link>
-                                <el-link type="primary" :disabled="row.sqlstatus === '已入库' || row.knowledgestatus === '知识抽取未完成'" style="margin-right: 20px;">入库</el-link>
+                                <el-link type="primary" style="margin-right: 30px;">下载网络威胁情报</el-link>
+                                <el-link type="primary" :disabled="row.knowledgestatus === '知识抽取完成'" style="margin-right: 30px;">知识抽取</el-link>
+                                <!-- <el-link type="primary" :disabled="row.knowledgestatus === '知识抽取未完成'" style="margin-right: 30px;">下载知识抽取结果</el-link> -->
+                                <el-link type="primary" :disabled="row.knowledgestatus === '知识抽取未完成' || row.sqlstatus === '知识融合完成'" style="margin-right: 30px;">知识融合</el-link>
+                                <!-- <el-link type="primary" :disabled="row.sqlstatus === '已入库' || row.knowledgestatus === '知识抽取未完成'" style="margin-right: 20px;">入库</el-link> -->
                                 <!-- <el-text class="mx-1" type="primary" style="margin-right: 20px;">下载威胁情报</el-text>
                                 <el-text class="mx-1" type="primary" style="margin-right: 20px;">知识抽取</el-text>
                                 <el-text class="mx-1" type="primary" style="margin-right: 20px;">抽取结果下载</el-text> -->

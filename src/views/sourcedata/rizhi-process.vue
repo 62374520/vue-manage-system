@@ -71,6 +71,7 @@ let columns = ref([
     // { prop: 'datatype', label: '数据类型' },
     { prop: 'uploadtime', label: '上传时间' },
     { prop: 'status', label: '上传状态' },
+    { prop: 'yuchuli', label: '预处理状态' },
     { prop: 'operator', label: '操作', width: 250 },
 ])
 const page = reactive({

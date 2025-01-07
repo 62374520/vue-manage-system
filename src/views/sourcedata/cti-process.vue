@@ -58,8 +58,8 @@
                         </el-row>
                         <el-row gutter={20} style="margin-left: 300px;">
                             <el-col :span="12">
-                                <el-form-item label="入库状态：">
-                                    <el-select v-model="formInline.region" placeholder="选择入库状态" clearable
+                                <el-form-item label="知识融合状态：">
+                                    <el-select v-model="formInline.region" placeholder="选择知识融合状态" clearable
                                         style="width: 200px;">
                                         <el-option label="网络威胁情报" value="网络威胁情报" />
                                         <el-option label="系统审计日志" value="系统审计日志" />
@@ -109,7 +109,7 @@
                             </el-form-item>
                             <el-form-item label="模型参数" :label-width="formLabelWidth">
                                 <el-col :span="24" style="text-align: center;">
-                                    <el-select disabled  v-model="formInline.date2" placeholder="默认参数" clearable
+                                    <el-select  v-model="formInline.date2" placeholder="默认参数" clearable
                                         style="width: 350px; " >
                                         <el-option label="默认参数" value="默认参数" />
                                     </el-select>
@@ -165,11 +165,12 @@ const handleSearch = () => {
 // 表格相关
 let columns = ref([
     { prop: 'filename', label: '网络威胁情报名称', width: 350, align: 'center' },
-    { prop: 'releasetime', label: '网络威胁情报发布时间', width: 200, align: 'center' },
+    { prop: 'releasetime', label: '发布时间', width: 200, align: 'center' },
     // { prop: 'datatype', label: '数据类型' },
     { prop: 'uploadtime', label: '上传时间', width: 200, align: 'center' },
     { prop: 'knowledgestatus', label: '知识抽取状态', width: 150, align: 'center' },
-    { prop: 'sqlstatus', label: '存储状态', width: 150, align: 'center' },
+    { prop: 'sqlstatus', label: '知识融合状态', width: 150, align: 'center' },
+    // { prop: 'sqlstatus', label: '存储状态', width: 150, align: 'center' },
     { prop: 'operator', label: '操作' },
 ])
 const page = reactive({
@@ -225,7 +226,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-12-01 14:26:02',
         knowledgestatus: '知识抽取未完成',
-        sqlstatus: '未入库',
+        // sqlstatus: '未入库',
+        sqlstatus: '知识融合未完成',
         status: '上传成功',
     },
     {
@@ -234,7 +236,8 @@ const fileData: File[] = [
         datatype: '2024-12-01 14:25:56',
         uploadtime: '2024-12-01 14:25:56',
         knowledgestatus: '知识抽取未完成',
-        sqlstatus: '未入库',
+        // sqlstatus: '未入库',
+        sqlstatus: '知识融合未完成',
         status: '上传成功',
     },
     {
@@ -243,7 +246,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-12-01 14:25:57',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '未入库',
+        // sqlstatus: '未入库',
+        sqlstatus: '知识融合未完成',
         status: '上传成功',
     },
     {
@@ -252,7 +256,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-30 08:34:02',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
     {
@@ -261,7 +266,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-29 14:25:02',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
     {
@@ -270,7 +276,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-29 14:24:59',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
     {
@@ -279,7 +286,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-29 14:24:58',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
     {
@@ -288,7 +296,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-27 11:39:56',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
     {
@@ -297,7 +306,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-27 11:39:55',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
     {
@@ -306,7 +316,8 @@ const fileData: File[] = [
         datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
         uploadtime: '2024-11-27 11:39:50',
         knowledgestatus: '知识抽取完成',
-        sqlstatus: '已入库',
+        // sqlstatus: '已入库',
+        sqlstatus: '知识融合完成',
         status: '上传成功',
     },
 ]

@@ -67,11 +67,12 @@ const handleSearch = () => {
 // 表格相关
 let columns = ref([
     { prop: 'filename', label: '文件名', width: 350, align: 'center'  },
-    { prop: 'filetype', label: '文件类型' },
+    { prop: 'filetype', label: '文件类型', width:120 },
     // { prop: 'datatype', label: '数据类型' },
     { prop: 'uploadtime', label: '上传时间' },
-    { prop: 'status', label: '上传状态' },
-    { prop: 'operator', label: '操作', width: 250 },
+    { prop: 'status', label: '上传状态', width:100 },
+    { prop: 'yuchuli', label: '预处理状态', width:150 },
+    { prop: 'operator', label: '操作', width: 300 },
 ])
 const page = reactive({
     index: 1,
@@ -86,6 +87,7 @@ interface File {
     datatype: string
     uploadtime: string
     status: string
+    yuchuli:string
 }
 const fileData: File[] = [
   {
@@ -94,6 +96,7 @@ const fileData: File[] = [
     datatype: '2024-12-01 14:25:56',
     uploadtime: '2024-12-01 14:25:56',
     status: '上传成功',
+    yuchuli:'预处理未完成',
   },
   {
     filename: 'APT29 attacks Embassies using CVE-2023-38831 - report en.pdf',
@@ -101,6 +104,7 @@ const fileData: File[] = [
     datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
     uploadtime: '2024-12-01 14:25:57',
     status: '上传成功',
+    yuchuli:'预处理未完成',
   },
   {
     filename: 'WildCard_ The APT Behind SysJoker Targets Critical Sectors in Israel.pdf',
@@ -108,6 +112,7 @@ const fileData: File[] = [
     datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
     uploadtime: '2024-12-01 14:26:02',
     status: '上传成功',
+    yuchuli:'预处理未完成',
   },
   {
     filename: 'ta1-cadets-e3.json',
@@ -115,6 +120,7 @@ const fileData: File[] = [
     datatype: 'Lohrbergstr. 86c, Süd Lilli, Saarland',
     uploadtime: '2024-12-01 14:26:16',
     status: '上传成功',
+    yuchuli:'预处理未完成',
   },
 ]
 const getData = async () => {

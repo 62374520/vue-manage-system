@@ -36,7 +36,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/file-upload',
                 name: 'file-upload',
                 meta: {
-                    title: '文件上传',
+                    title: '数据上传与预处理',
                     permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "file-upload" */ '../views/sourcedata/file-upload.vue'),
@@ -45,7 +45,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/cti-process',
                 name: 'cti-process',
                 meta: {
-                    title: '网络威胁情报管理',
+                    title: '知识抽取与知识融合',
                     permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "cti-process" */ '../views/sourcedata/cti-process.vue'),
@@ -54,7 +54,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/rizhi-process',
                 name: 'rizhi-process',
                 meta: {
-                    title: '系统审计日志管理',
+                    title: '系统审计日志预处理',
                     permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "rizhi-process" */ '../views/sourcedata/rizhi-process.vue'),
@@ -63,7 +63,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/knowledge-show',
                 name: 'knowledge-show',
                 meta: {
-                    title: '图谱展示',
+                    title: '知识图谱展示',
                     permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "knowledge-show" */ '../views/know/knowledge-show.vue'),
@@ -72,7 +72,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/knowledge-manage',
                 name: 'knowledge-manage',
                 meta: {
-                    title: '知识库管理',
+                    title: '知识管理',
                     permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "knowledge-manage" */ '../views/know/knowledge-manage.vue'),
@@ -81,7 +81,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/attack-detect',
                 name: 'attack-detect',
                 meta: {
-                    title: '攻击检测',
+                    title: '网络攻击检测',
                     permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "attack-detect" */ '../views/detect/attack-detect.vue'),

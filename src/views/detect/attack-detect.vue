@@ -44,18 +44,23 @@
                     </el-form-item>
                     <el-form-item label="选择模型参数：" :label-width="formLabelWidth">
                         <el-col :span="24" style="text-align: center;">
-                            <el-select disabled v-model="formInline.date3" placeholder="默认参数" clearable
+                            <el-select v-model="formInline.date3" placeholder="默认参数" clearable
                                 style="width: 350px; ">
                                 <el-option label="默认参数" value="默认参数" />
                             </el-select>
                         </el-col>
                     </el-form-item>
-                    <el-form-item label="是否使用攻击知识" :label-width="formLabelWidth">
-                        <el-col :span="24" style="text-align: center;">
+                    <el-form-item label="攻击知识抽取范围：" :label-width="formLabelWidth">
+                        <!-- <el-col :span="24" style="text-align: center;">
                             <el-radio-group v-model="formInline.date4">
                                 <el-radio value="1" size="large" border>使用</el-radio>
                                 <el-radio value="2" size="large" border>不使用</el-radio>
                             </el-radio-group>
+                        </el-col> -->
+                        <el-col :span="24" style="text-align: center;">
+                            <el-select v-model="formInline.date4" placeholder="选择网络威胁知识图谱" clearable style="width: 350px;">
+                                <el-option label="所有网络威胁情报" value="所有网络威胁情报" />
+                            </el-select>
                         </el-col>
                     </el-form-item>
 
@@ -89,9 +94,9 @@
                                 <el-icon :size="20" class="icon" style="color:red">
                                     <WarnTriangleFilled />
                                 </el-icon>
-                            <p class="card-header-title">攻击检测结果</p>
+                            <p class="card-header-title">网络攻击检测结果</p>
                             </p>
-                            <p class="card-header-desc">当前任务的攻击检测结果</p>
+                            <p class="card-header-desc">当前任务的网络攻击检测结果</p>
                         </el-col>
                     </el-row>
                     <el-row :gutter="20" class="mgb20">
@@ -143,9 +148,9 @@
                                 </el-icon>
                                 <div class="card-content">
                                     <div><el-text class="mx-1" style="font-weight: bold;"
-                                            size="large">异常攻击实体统计</el-text></div>
+                                            size="large">网络攻击涉及的异常实体统计</el-text></div>
                                     <countup class="card-num color4" :end="12808" />
-                                    <div><el-text class="mx-1">当前任务检测出的攻击实体数量</el-text></div>
+                                    <div><el-text class="mx-1">当前任务检测出的异常实体数量</el-text></div>
                                 </div>
                             </el-card>
                         </el-col>
